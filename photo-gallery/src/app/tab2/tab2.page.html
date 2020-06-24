@@ -14,10 +14,20 @@
   </ion-header>
 
   <app-explore-container name="Tab 2 page"></app-explore-container>
-</ion-content>
-<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col
+        *ngFor="let photo of photoService.photos; index as position"
+        size="6"
+      >
+        <ion-img
+          src="{{photo.base64? photo.base64 : photo.webviewPath}}"
+        ></ion-img>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
   <ion-fab vertical="bottom" horizontal="center" slot="fixed">
-    <ion-fab-button>
+    <ion-fab-button (click)="photoService.addNewToGallery()">
       <ion-icon name="camera"></ion-icon>
     </ion-fab-button>
   </ion-fab>
