@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActionSheetController } from '@ionic/angular';
 
 import { PhotoService } from '../services/photo.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab2',
@@ -11,7 +12,8 @@ import { PhotoService } from '../services/photo.service';
 export class Tab2Page implements OnInit {
   constructor(
     public photoService: PhotoService,
-    public actionSheetController: ActionSheetController
+    public actionSheetController: ActionSheetController,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -31,6 +33,14 @@ export class Tab2Page implements OnInit {
           },
         },
         {
+          text: 'Create Recipe',
+          role: 'destructive',
+          icon: 'add-outline',
+          handler: () => {
+            this.createRecipe(photo);
+          },
+        },
+        {
           text: 'Cancel',
           icon: 'close',
           role: 'cancel',
@@ -41,5 +51,10 @@ export class Tab2Page implements OnInit {
       ],
     });
     await actionSheet.present();
+  }
+
+  public createRecipe(photo) {
+    this.photoService.selectedPhotoPath = photo.webviewPath;
+    this.router.navigate(['/newRecipe']);
   }
 }

@@ -12,6 +12,21 @@
       <ion-title size="large">Recipes</ion-title>
     </ion-toolbar>
   </ion-header>
+  <ion-list>
+    <ion-list-header>
+      Recipes
+    </ion-list-header>
+    <ion-item *ngFor="let recipe of recipeService.recipes">
+      <ion-avatar slot="start">
+        <img src="{{recipe.webviewPath}}" />
+      </ion-avatar>
+      <ion-label>
+        <h2>{{recipe.name}}</h2>
+        <!-- <h3>I'm a big deal</h3>
+        <p>Listen, I've had a pretty messed up day...</p> -->
+      </ion-label>
+    </ion-item>
+  </ion-list>
 
   <!-- <app-explore-container name="Tab 1 page"></app-explore-container> -->
 </ion-content>

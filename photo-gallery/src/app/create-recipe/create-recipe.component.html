@@ -1,0 +1,40 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Create Recipe
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Create Recipe</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label>Recipe Name</ion-label>
+            <ion-input required ngModel name="name"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <img class="ion-padding" src="{{ photoService.selectedPhotoPath }}" />
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <div class="ion-padding">
+      <ion-button [disabled]="f.invalid" type="submit" class="ion-no-margin"
+        >Add recipe</ion-button
+      >
+      <ion-button (click)="cancel()" type="button" class="ion-no-margin"
+        >Cancel</ion-button
+      >
+    </div>
+  </form>
+</ion-content>

@@ -15,12 +15,11 @@ const { Camera, Filesystem, Storage } = Plugins;
   providedIn: 'root',
 })
 export class PhotoService {
+  public selectedPhotoPath: string;
   public photos: Photo[] = [];
   public PHOTO_STORAGE: string = 'photos';
 
-  constructor(private platform: Platform) {
-    // this.platform = platform;
-  }
+  constructor(private platform: Platform) {}
 
   public async addNewToGallery() {
     const capturedPhoto = await Camera.getPhoto({
