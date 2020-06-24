@@ -12,8 +12,6 @@
       <ion-title size="large">Photo Gallery</ion-title>
     </ion-toolbar>
   </ion-header>
-
-  <app-explore-container name="Tab 2 page"></app-explore-container>
   <ion-grid>
     <ion-row>
       <ion-col
@@ -22,6 +20,7 @@
       >
         <ion-img
           src="{{ photo.base64 ? photo.base64 : photo.webviewPath }}"
+          (click)="showActionSheet(photo, position)"
         ></ion-img>
       </ion-col>
     </ion-row>
